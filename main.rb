@@ -1,19 +1,16 @@
 require "rest-client"
 require "json"
 require "sequel"
-require "models"
+require_relative "models/models.rb"
+
 
 marketDataURL = "https://esi.evetech.net/latest/markets/prices/?datasource=tranquility"
-postgres_uri = "postgres://amorris:maorris@localhost/eve_sde"
 
 filename = 'scratch'
 
-DB = Sequel.connect postgres_uri
 
-class InvType < Sequel::Model(:invTypes)
-end
 
-types = InvType.all
+types = Models::InvType.all
 File.open filename, 'w' do |f|
   types.each {|item| f.puts(item[:typeName]) }
 end
