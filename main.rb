@@ -2,8 +2,6 @@
 require_relative 'models/models'
 include Models
 
-InvCategory.where(Sequel.ilike(:categoryName, 'ship')).first.groups.each do |group|
-  group.types.each do |type|
-    puts "#{type.typeName} (#{type.typeID})"
-  end
+InvGroup.where(Sequel.ilike(:groupName, 'frigate')).first.types.each do |type|
+  puts "#{type.typeName} is a frigate and costs #{type.basePrice || 'not for sale'} ISK."
 end
