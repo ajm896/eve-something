@@ -9,6 +9,7 @@ module Models
   class InvType < Sequel::Model(:invTypes)
     set_primary_key :typeID
     one_to_one :industryActivity, class: 'Models::IndustryActivity', key: :typeID
+    many_to_one :group, class: 'Models::InvGroup', key: :groupID
   end
 
   # Represents the materials required for an industry activity.
@@ -46,11 +47,22 @@ module Models
     many_to_one :product, class: 'Models::InvType', key: :productTypeID
   end
 
+  class InvGroup < Sequel::Model(:invGroups)
+    set_primary_key :groupID
+    one_to_many :types, class: 'Models::InvType', key: :groupID
+    many_to_one :category, class: 'Models::InvCategory', key: :categoryID
+  end
+
+  class InvCategory < Sequel::Model(:invCategories)
+    set_primary_key :categoryID
+    one_to_many :groups, class: 'Models::InvGroup', key: :categoryID
+  end
+
   def get_blueprint(bp_query)
     item_lookup(bp_query)
   end
 
   def item_lookup(item_query)
-    InvType.where(typeName: item_query).first
+    InvType.where(Sequel.ilike(:typeName, item_query)).first
   end
 end
