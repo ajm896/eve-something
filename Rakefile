@@ -4,6 +4,10 @@ require 'sequel'
 require 'dotenv/load' if File.exist?('.env') # Load .env file if present
 require_relative 'config/database' # Load database connection
 
+task :default do
+  system('./main.rb')
+end
+
 namespace :db do
   include Config
   desc 'Test database connection'
