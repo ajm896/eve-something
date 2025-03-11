@@ -1,18 +1,7 @@
-require "rest-client"
-require "json"
+#!/usr/bin/env ruby
 require "sequel"
 require_relative "models/models.rb"
 
+include Models
 
-marketDataURL = "https://esi.evetech.net/latest/markets/prices/?datasource=tranquility"
-
-filename = 'scratch'
-
-
-
-types = Models::InvType.all
-File.open filename, 'w' do |f|
-  types.each {|item| f.puts(item[:typeName]) }
-end
-
-
+p InvType.all

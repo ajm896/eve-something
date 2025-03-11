@@ -1,0 +1,15 @@
+GEM
+  specs:
+    bigdecimal (3.1.9)
+    sequel (5.90.0)
+      bigdecimal
+
+PLATFORMS
+  arm64-darwin-24
+  ruby
+
+DEPENDENCIES
+  sequel
+
+BUNDLED WITH
+   2.6.5
