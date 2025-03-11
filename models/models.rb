@@ -1,6 +1,7 @@
+# Type: Module
 # This module contains the models for the application.
-require 'sequel'
 module Models
+  require 'sequel'
   postgres_uri = 'postgres://amorris:maorris@localhost/eve_sde'
   DB = Sequel.connect postgres_uri
 
@@ -46,6 +47,10 @@ module Models
   end
 
   def get_blueprint(bp_query)
-    InvType.where(typeName: bp_query).first
+    item_lookup(bp_query)
+  end
+
+  def item_lookup(item_query)
+    InvType.where(typeName: item_query).first
   end
 end
