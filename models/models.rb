@@ -9,11 +9,11 @@ module Models
   include Industry
   include Inventory
 
-  def get_blueprint(bp_query)
+  def self.get_blueprint(bp_query)
     item_lookup(bp_query)
   end
 
-  def item_lookup(item_query)
+  def self.item_lookup(item_query)
     InvType.where(Sequel.ilike(:typeName, item_query)).first
   end
 end
