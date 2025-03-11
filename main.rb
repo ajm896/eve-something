@@ -4,30 +4,33 @@
 require_relative 'models/models'
 require_relative 'config/database'
 
-module Main # rubocop:disable Style/Documentation
+# Main module for the Eve SDE Query Tool.
+# This module includes methods to interact with blueprints and print their details.
+module Main
   include Models
 
-  def self.print_item(bluep)
-    if bluep
-      print_blueprint_details(bluep)
+  def self.print_item(blueprint)
+    if blueprint
+      print_blueprint_details(blueprint)
     else
       puts 'No blueprint found with that name.'
     end
   end
 
-  def self.print_blueprint_details(bluep)
-    puts "Found blueprint: #{bluep.typeName} (ID: #{bluep.typeID})"
-    puts "Group: #{bluep.group.groupName} (ID: #{bluep.group.groupID})"
-    puts "Category: #{bluep.group.category.categoryName} (ID: #{bluep.group.category.categoryID})"
+  def self.print_blueprint_details(blueprint)
+    puts "Found blueprint: #{blueprint.typeName} (ID: #{blueprint.typeID})"
+    puts "Group: #{blueprint.group.groupName} (ID: #{blueprint.group.groupID})"
+    puts "Category: #{blueprint.group.category.categoryName} (ID: #{blueprint.group.category.categoryID})"
+  rescue NoMethodError
+    puts 'Error: Blueprint details are incomplete or invalid.'
   end
 
   def self.run
     # Example usage of the models
-    puts 'Welcome to the Eve SDE Query Tool!'
     puts 'Please enter a blueprint name to search for:'
     blueprint_name = gets.chomp
-    bluep = Models.get_blueprint(blueprint_name)
-    print_item(bluep)
+    blueprint = Models.get_blueprint(blueprint_name)
+    print_item(blueprint)
   end
 end
 
