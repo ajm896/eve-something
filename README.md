@@ -1,12 +1,12 @@
 # Eve Something
 
 ## Description
-Eve Something is a project that [briefly describe the purpose of your project].
+Eve Something is a project that allows users to query and retrieve information about blueprints and their associated data from the Eve SDE (Static Data Export).
 
 ## Features
-- Feature 1
-- Feature 2
-- Feature 3
+- Query blueprints by name
+- Retrieve blueprint details including group and category information
+- Display industry activity materials and products
 
 ## Installation
 To install this project, follow these steps:
@@ -20,13 +20,13 @@ To install this project, follow these steps:
     ```
 3. Install dependencies:
     ```bash
-    [Add your installation command here, e.g., npm install, pip install -r requirements.txt, etc.]
+    bundle install
     ```
 
 ## Usage
 To use this project, follow these steps:
-1. [Describe the first step]
-2. [Describe the second step]
-
-```bash
-[Add your usage command here, e.g., npm start, python script.py, etc.]
+1. Run the main script:
+    ```bash
+    ./main.rb
+    ```
+2. Follow the prompts to enter a blueprint name and retrieve its details.

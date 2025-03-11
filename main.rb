@@ -11,7 +11,7 @@ module Main # rubocop:disable Style/Documentation
     if bluep
       print_blueprint_details(bluep)
     else
-      puts "No blueprint found with the name '#{blueprint_name}'."
+      puts 'No blueprint found with that name.'
     end
   end
 
