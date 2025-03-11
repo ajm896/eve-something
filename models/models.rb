@@ -47,12 +47,14 @@ module Models
     many_to_one :product, class: 'Models::InvType', key: :productTypeID
   end
 
+  # Represents an inventory group in the database.
   class InvGroup < Sequel::Model(:invGroups)
     set_primary_key :groupID
     one_to_many :types, class: 'Models::InvType', key: :groupID
     many_to_one :category, class: 'Models::InvCategory', key: :categoryID
   end
 
+  # Represents an inventory category in the database.
   class InvCategory < Sequel::Model(:invCategories)
     set_primary_key :categoryID
     one_to_many :groups, class: 'Models::InvGroup', key: :categoryID
