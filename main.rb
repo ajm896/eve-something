@@ -4,4 +4,6 @@ require_relative "models/models.rb"
 
 include Models
 
-p InvType.all
+DB[:invTypes].join(:industryActivity, typeID: :typeID).each do |row|
+    puts row
+end
