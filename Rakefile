@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Rakefile
 require 'rake'
 require 'sequel'

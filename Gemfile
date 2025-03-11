@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 gem 'dotenv'
-gem 'sequel'
 gem 'rubocop'
+gem 'sequel'
