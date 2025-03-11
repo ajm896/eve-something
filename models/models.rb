@@ -1,13 +1,11 @@
 # Type: Module
-require 'sequel'
-require_relative './inventory/inv'
+require_relative '../config/database'
+require_relative './inventory/inventory'
 require_relative './industry/industry'
 
 # This module contains the models for the application.
 module Models
-  PG_URI = 'postgres://amorris:maorris@localhost/eve_sde'.freeze
-  DB = Sequel.connect PG_URI
-
+  include Config
   include Industry
   include Inventory
 
