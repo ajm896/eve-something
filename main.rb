@@ -1,9 +1,4 @@
 #!/usr/bin/env ruby
-require "sequel"
-require_relative "models/models.rb"
-
+require_relative 'models/models'
 include Models
-
-DB[:invTypes].join(:industryActivity, typeID: :typeID).each do |row|
-    puts row
-end
+p get_blueprint('Rifter')
